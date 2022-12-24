@@ -11,4 +11,4 @@ def infinity():
 
 
 for _ in infinity():
-    cheat.check_obst()
+    cheat.check_obstacle()
