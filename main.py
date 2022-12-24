@@ -5,10 +5,16 @@ while cheat.trex_location is None:
     cheat.find_trex()
 
 
-def infinity():
-    while True:
-        yield
-
-
-for _ in infinity():
+# def infinity():
+#     while True:
+#         yield
+#
+#
+# for _ in infinity():
+#     cheat.check_obstacle()
+def refit():
     cheat.check_obstacle()
+    refit()
+
+
+refit()
