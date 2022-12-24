@@ -23,9 +23,11 @@ class Trex_wrecker:
         # pixel_bird = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1])[0]
 
         for Pixel in range(9):
-            pixel_c = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 22 + Pixel)[0]
+            pixel_a = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 22 + Pixel)[0]
+            pixel_b = pixel(self.trex_location[0] + self.jump_dist + 1, self.trex_location[1] + 22 + Pixel)[0]
+            pixel_c = pixel(self.trex_location[0] + self.jump_dist + 2, self.trex_location[1] + 22 + Pixel)[0]
             pixel_bird = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1])[0]
-            if pixel_c < 247:
+            if pixel_a < 247 or pixel_b < 247 or pixel_c < 247:
                 press('up')
                 self.jump_dist += 2
             elif pixel_bird < 247:
