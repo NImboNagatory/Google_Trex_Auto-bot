@@ -26,7 +26,7 @@ class TrexWrecker:
             # check if cactus is ahead
             if pix_c < 247:
                 press('up')
-                sleep(0.15)
+                sleep(0.18)
                 keyDown('down')
                 sleep(0.06)
                 keyUp('down')
