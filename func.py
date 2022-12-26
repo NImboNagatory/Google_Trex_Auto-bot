@@ -3,11 +3,11 @@ from webbrowser import open
 from time import time
 
 
-class Trex_wrecker:
+class Trex_Wrecker:
     def __init__(self):
         self.Day_Night = "Day"
         self.trex_location = None
-        self.jump_dist = 160
+        self.jump_dist = 180
         open("https://elgoog.im/t-rex/v2/", new=1)
 
     def find_trex(self):
@@ -30,15 +30,18 @@ class Trex_wrecker:
             pixel_e = pixel(self.trex_location[0] + self.jump_dist + 1, self.trex_location[1] + 22 + Pixel)[0]
             pixel_f = pixel(self.trex_location[0] + self.jump_dist + 2, self.trex_location[1] + 22 + Pixel)[0]
             pixel_i = pixel(self.trex_location[0] + self.jump_dist + 3, self.trex_location[1] + 22 + Pixel)[0]
+            pixel_bird_a = pixel(self.trex_location[0] + self.jump_dist - 1, self.trex_location[1])[0]
             pixel_bird = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1])[0]
+            pixel_bird_b = pixel(self.trex_location[0] + self.jump_dist + 1, self.trex_location[1])[0]
             if pixel_a < 247 or pixel_b < 247 or pixel_c < 247 or pixel_d < 247 or pixel_e < 247 or pixel_f < 247 or pixel_i < 247:
                 press('up')
                 self.jump_dist += 2
-            elif pixel_bird < 247:
+            elif pixel_bird_a < 247 or pixel_bird < 247 or pixel_bird_b < 247:
                 start = time()
+                self.jump_dist += 2
                 while time() - start < 100:
                     press('down')
-                    self.jump_dist += 2
+
 
         # if pixel_cactus < 247:
         #     self.jump_dist += 2

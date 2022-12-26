@@ -1,6 +1,6 @@
-from func import Trex_wrecker
+from func import Trex_Wrecker
 
-cheat = Trex_wrecker()
+cheat = Trex_Wrecker()
 while cheat.trex_location is None:
     cheat.find_trex()
 
