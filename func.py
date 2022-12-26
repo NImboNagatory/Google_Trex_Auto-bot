@@ -7,7 +7,7 @@ class TrexWrecker:
     def __init__(self):
         self.Day_Night = "Day"
         self.trex_location = None
-        self.jump_dist = 140
+        self.jump_dist = 137
         open("https://elgoog.im/t-rex/v2/", new=1)
 
     def find_trex(self):
@@ -28,7 +28,7 @@ class TrexWrecker:
                 press('up')
                 sleep(0.15)
                 keyDown('down')
-                sleep(0.05)
+                sleep(0.06)
                 keyUp('down')
             else:
                 # check if bird is up ahead
