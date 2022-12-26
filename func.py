@@ -1,9 +1,9 @@
 from pyautogui import click, pixel, locateOnScreen, press, keyUp, keyDown
 from webbrowser import open
-from time import sleep, time
+from time import sleep
 
 
-class Trex_Wrecker:
+class TrexWrecker:
     def __init__(self):
         self.Day_Night = "Day"
         self.trex_location = None
@@ -14,19 +14,27 @@ class Trex_Wrecker:
         trex_location = locateOnScreen('data/Trex.PNG')
         if trex_location is not None:
             self.trex_location = trex_location
-            click(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 29)
+            click(self.trex_location[0] + self.jump_dist, self.trex_location[1])
             press('up')
 
     def check_obstacle(self):
         while True:
-            if self.pixel_catcher() == "Cactus":
+            pix_data = self.pixel_catcher()
+            if pix_data == "Cactus":
                 press('up')
                 sleep(0.2)
                 keyDown('down')
-                sleep(0.1)
+                keyUp('down')
+            elif pix_data == "Pterosaurs":
+                keyDown('down')
+                sleep(0.5)
                 keyUp('down')
 
     def pixel_catcher(self):
-        pixel_i_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 29)[0]
-        if pixel_i_ < 247:
+        pixel_c_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 29)[0]
+        if pixel_c_ < 247:
             return "Cactus"
+
+        pixel_b_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1]-2)[0]
+        if pixel_b_ < 247:
+            return "Pterosaurs"
