@@ -1,4 +1,4 @@
-from pyautogui import click, pixel, locateOnScreen, press, keyUp, keyDown
+from pyautogui import click, pixel, locateOnScreen, press, keyUp, keyDown, screenshot
 from webbrowser import open
 from time import sleep
 
@@ -21,16 +21,19 @@ class TrexWrecker:
     def check_obstacle(self):
         # infinite loop
         for _ in iter(int, 1):
-            pixel_c_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 28)[0]
-            pixel_b_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] - 2)[0]
+            scr = screenshot()
+            pix_c = scr.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] + 28))[0]
             # check if cactus is ahead
-            if pixel_c_ < 247:
+            if pix_c < 247:
                 press('up')
-                sleep(0.2)
+                sleep(0.15)
                 keyDown('down')
+                sleep(0.05)
                 keyUp('down')
+            else:
                 # check if bird is up ahead
-            elif pixel_b_ < 247:
-                keyDown('down')
-                sleep(0.5)
-                keyUp('down')
+                pix_b = scr.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] - 2))[0]
+                if pix_b < 247:
+                    keyDown('down')
+                    sleep(0.5)
+                    keyUp('down')
