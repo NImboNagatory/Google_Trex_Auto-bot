@@ -21,8 +21,8 @@ class TrexWrecker:
     def check_obstacle(self):
         # infinite loop
         for _ in iter(int, 1):
-            scr = screenshot()
-            pix_c = scr.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] + 28))[0]
+            src = screenshot()
+            pix_c = src.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] + 28))[0]
             # check if cactus is ahead
             if pix_c < 247:
                 press('up')
@@ -32,7 +32,7 @@ class TrexWrecker:
                 keyUp('down')
             else:
                 # check if bird is up ahead
-                pix_b = scr.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] - 2))[0]
+                pix_b = src.getpixel((self.trex_location[0] + self.jump_dist, self.trex_location[1] - 2))[0]
                 if pix_b < 247:
                     keyDown('down')
                     sleep(0.5)
