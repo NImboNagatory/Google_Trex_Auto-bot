@@ -19,14 +19,14 @@ class Trex_Wrecker:
 
     def check_obstacle(self):
         while True:
-            if self.pixel_catcher():
+            if self.pixel_catcher() == "Cactus":
                 press('up')
                 sleep(0.2)
-                press('down')
+                keyDown('down')
+                sleep(0.1)
+                keyUp('down')
 
     def pixel_catcher(self):
-        pixel_i_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 30)[0]
+        pixel_i_ = pixel(self.trex_location[0] + self.jump_dist, self.trex_location[1] + 29)[0]
         if pixel_i_ < 247:
-            return True
-        else:
-            return False
+            return "Cactus"
